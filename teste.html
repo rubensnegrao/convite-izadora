@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Convite Interativo</title>
+  <style>
+    #naoAceito {
+      position: absolute;
+      transition: left 0.3s ease, top 0.3s ease;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center bg-gray-100 relative overflow-hidden">
+  <div class="text-center bg-white p-8 rounded-lg shadow-md">
+    <img src="img/gif_esperando.gif" alt="Local" class="mx-auto mb-4 rounded-md h-[600px]">
+    <p class="text-lg font-semibold mb-6">Venha conhecer o nosso espaço incrível! 🌟</p>
+    <div class="flex gap-4 justify-center items-center relative">
+      <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Aceito</button>
+      <button id="naoAceito" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" style="position: relative;">Não aceito</button>
+    </div>
+  </div>
+
+  <script>
+    const naoAceitoBtn = document.getElementById('naoAceito');
+
+    naoAceitoBtn.addEventListener('click', () => {
+      const container = document.body;
+      const containerWidth = container.clientWidth;
+      const containerHeight = container.clientHeight;
+      const buttonWidth = naoAceitoBtn.offsetWidth;
+      const buttonHeight = naoAceitoBtn.offsetHeight;
+
+      const randomX = Math.max(0, Math.floor(Math.random() * (containerWidth - buttonWidth)));
+      const randomY = Math.max(0, Math.floor(Math.random() * (containerHeight - buttonHeight)));
+
+      naoAceitoBtn.style.left = `${randomX}px`;
+      naoAceitoBtn.style.top = `${randomY}px`;
+    });
+  </script>
+</body>
+</html>
+
